@@ -1,8 +1,25 @@
 #! /usr/bin/env python
+"""
+12/2014
+Xinyu Max liu 
+xinyulrsm@gmail.com
+"""
+
 import sys
 
-for line in sys.stdin:
-    line = line.strip()
-    words = line.split()
-    for word in words:
-	print '%s\t%s'%(word, 1)
+
+def get_input(source,bad_chars = '{},<>()[]'):
+    for Ln in source:
+	line = Ln
+	if bad_chars is not None:
+	    for ch in bad_chars:
+	        line = line.replace(ch,' ' )
+        yield line.split()
+
+def mapper(source):
+    for words in get_input(sys.stdin):
+        for word in set(words):
+	    print '%s\t%s'%(word, words.count(word))
+
+if __name__ == '__main__':
+    mapper(sys.stdin)
