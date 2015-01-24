@@ -1,27 +1,27 @@
 #! /usr/bin/env python
+"""
+12/2014
+Xinyu Max liu 
+xinyulrsm@gmail.com
+"""
+
 import sys
+from itertools import groupby
 
-current_word = None
-current_count = 0
-word = None
+def get_mapper_key_values(source = sys.stdin):
+    for line in source:
+	yield line.split('\t',1)
 
-for line in sys.stdin:
-    line = line.strip()
-    
-    word, count = line.split('\t',1)
-    
-    try:
-	count = int(count)
-    except ValueError:
-	continue
+def reducer(source = sys.stdin):
+    key_values = get_mapper_key_values(source)
 
-    if current_word == word:
-	current_count += count
-    else:
-	if current_word:
-	    print "%s\t%d"%(current_word, current_count)
-	current_count = count
-	current_word = word
+    for thisWord, g in groupby(key_values, lambda x: x[0]):
+	try:
+	    thisCount = sum(int(count) for _, count in g)
+	    print "%s\t%d" % (thisWord,thisCount)
+	except valueError:
+	    pass
 
-if current_word == word: 
-    print "%s\t%d"%(current_word, current_count)
+if __name__ == '__main__':
+    reducer()
+

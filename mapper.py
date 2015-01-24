@@ -8,7 +8,7 @@ xinyulrsm@gmail.com
 import sys
 
 
-def get_input(source,bad_chars = '{},<>()[]'):
+def get_input(source,bad_chars = '{},<>()[].'):
     for Ln in source:
 	line = Ln
 	if bad_chars is not None:
@@ -19,7 +19,7 @@ def get_input(source,bad_chars = '{},<>()[]'):
 def mapper(source):
     for words in get_input(sys.stdin):
         for word in set(words):
-	    print '%s\t%s'%(word, words.count(word))
+	    print '%s\t%d'%(word, words.count(word))
 
 if __name__ == '__main__':
     mapper(sys.stdin)
