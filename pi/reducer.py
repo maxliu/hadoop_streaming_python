@@ -6,7 +6,8 @@
 import sys
 
 def get_mapper_values():
-	for vs in sys.stdin:
+	for line in sys.stdin:
+		vs = line.split('\t',1)[1]
 		yield float(vs)
 
 def reducer():
@@ -18,6 +19,6 @@ def reducer():
 		totalCount +=1
     
 	
-	print sumVal/float(totalCount)
+	print sumVal /float(totalCount)
 if __name__ == "__main__":
 	reducer()
