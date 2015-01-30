@@ -27,7 +27,7 @@ xarray = np.random.rand(total,n-1)
 
 
 y = []
-for i, x in enumerate( xarray):
+for x in xarray:
 	y.append(g(x,w))
 	print x
 
