@@ -18,7 +18,7 @@ def reducer(source = sys.stdin):
     for wx , wv in groupby(key_values, lambda x: x[0]):
 		try: 
 			wxsum = sum(float(wvx) for _, wvx in wv) 
-			print "%s\t%f" % (wx,wxsum)
+			print "%d\t%f" % (int(wx),wxsum)
 		except valueError: 
 			pass
 

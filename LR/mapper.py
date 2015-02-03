@@ -36,10 +36,10 @@ def mapper(source):
 		y = val[-1]
 		s = Sigma(x, w)
 		gs = y * g(-y * Sigma(x,w))
-		print '%s\t%f'%('w0',gs)
+		print '%d\t%f'%(0,gs)
 		for i, wk in enumerate(w[1:]):
 			wx = 'w'+str(i+1)
-			print '%s\t%f'%(wx, x[i]*gs)
+			print '%d\t%f'%(i+1, x[i]*gs)
 
 if __name__ == '__main__':
     mapper(sys.stdin)

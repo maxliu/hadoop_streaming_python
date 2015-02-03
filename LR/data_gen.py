@@ -5,14 +5,15 @@
 import sys
 from random import random
 import numpy as np
+from math import exp
 total = 10
 
 filename = 'data.txt'
 
-w = [0.1,0.2,0.3,0.4]
+w = [0.1,-0.2,0.3,-0.4,0.5,-0.6,0.7,-0.8,0.9,-1.0,1.1]
 n = len(w)
 
-def g(x,w):
+def Sigma(x,w):
 	"""
 		return = w[0]+w[1]*x[0]+w[2]*x[1]+...
 	"""
@@ -22,6 +23,9 @@ def g(x,w):
 		sum = sum + wn * x[i]
 	sum = sum + w[0]
 	return sum
+
+def g(x,w):
+	return 1.0/(1.0+exp(-Sigma(x,w)))	
 
 xarray = np.random.rand(total,n-1)
 

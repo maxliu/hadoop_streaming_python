@@ -13,6 +13,9 @@ sh = sub.Popen(cmdStr,stdout=sub.PIPE, stderr=sub.PIPE)
 output, errs = sh.communicate()
 print output
 
+w = [0.1,-0.2,0.3,-0.4,0.5,-0.6,0.7,-0.8,0.9,-1.0,1.1]
+
+wstr = ' '.join([str(z) for z in w])
 cmdStr = ['hadoop',
 'jar',
 '$HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-2.6.0.jar'.replace('$HADOOP_HOME',HADOOP_HOME),
@@ -21,7 +24,7 @@ cmdStr = ['hadoop',
 '-output',
 '$HADOOP_HOME/data/LR_result'.replace('$HADOOP_HOME',HADOOP_HOME),
 '-mapper', 
-"$HADOOP_HOME/python_code/LR/mapper.py 0.5 0.4 0.6 0.9 ".replace('$HADOOP_HOME',HADOOP_HOME),
+"$HADOOP_HOME/python_code/LR/mapper.py ".replace('$HADOOP_HOME',HADOOP_HOME) + wstr,
 '-reducer',
 '$HADOOP_HOME/python_code/LR/reducer.py'.replace('$HADOOP_HOME',HADOOP_HOME),
 '-file',
