@@ -15,6 +15,5 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-2.6.0.jar \
 
 echo "done. here is the results"
 hadoop fs -ls $HADOOP_HOME/data/wordCount_result 
-hadoop fs -cat $HADOOP_HOME/data/wordCount_result/part-00000 
-hadoop fs -cat $HADOOP_HOME/data/wordCount_result/part-00001 
+hadoop fs -cat $HADOOP_HOME/data/wordCount_result/part-*
 
