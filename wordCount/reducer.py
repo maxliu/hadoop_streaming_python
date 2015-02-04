@@ -57,4 +57,4 @@ def reducer_2(source=sys.stdin):
 
 if __name__ == '__main__':
     reducer_2()
-    # reducer()  # this also work
+    # reducer()  # this also works
